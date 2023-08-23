@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from . models import *
@@ -55,8 +56,8 @@ def become_donor(request):
         confirm_password = request.POST['confirm_password']
 
         if password != confirm_password:
-            messages.error(request, "Passwords do not match.")
-            return redirect('/signup')
+           messages.error(request, "Passwords do not match.")
+           return redirect('/signup')
 
         user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name, password=password)
         donors = Donor.objects.create(donor=user, phone=phone, state=state, city=city, address=address, gender=gender, blood_group=BloodGroup.objects.get(name=blood_group), date_of_birth=date, image=image)
