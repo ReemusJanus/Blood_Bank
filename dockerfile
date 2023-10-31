@@ -10,7 +10,7 @@ RUN pip install requirements.txt
 
 COPY . /app/
 
-EXPOSE 8000
+EXPOSE 8090
 
 ENV DB_HOST=localhost
 ENV DB_PORT=5432
